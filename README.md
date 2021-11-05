@@ -1,5 +1,5 @@
 ### <div align=center>遗传算法求解Ackley函数的最小值</div>
-<a href="https://colab.research.google.com/github/HTRT/GA/edit/master/GA.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+<a href="https://colab.research.google.com/github/HTRT/GA/master/GA.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
 
 ## 一、遗传算法的定义
 
