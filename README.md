@@ -1,6 +1,5 @@
 ### <div align=center>遗传算法求解Ackley函数的最小值</div>
 
-**<div align=center> URL：** 博客地址</div>
 
 ## 一、遗传算法的定义
 
