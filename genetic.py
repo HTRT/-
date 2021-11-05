@@ -16,9 +16,6 @@ dna_decode = []  # 种群DNA 解码列表
 pop = []  # 种群DNA列表
 
 
-# dit_dna = {}  # DNA链到解码列表的映射字典
-
-
 # 种群生存环境(需要优化的函数)
 def function_env_Ackley(x, y):
     if type(x) == list:
@@ -39,15 +36,8 @@ def function_env_Ackley(x, y):
 
 # 图像显示
 def show_Ackley(fig, x1, x2, i, n):
-    # 把输入列表转化成array形式
-    # x1 = np.array(x1)
-    # x2 = np.array(x2)
-    # x1, x2 = np.meshgrid(x1, x2)
     plt.clf()
-    # X = np.arange(-32, 32, 0.5)
-    # Y = np.arange(-32, 32, 0.5)
-    X, Y = np.mgrid[-40:40:35j, -40:40:35j]
-    # X, Y = np.meshgrid(X, Y)
+    X, Y = np.mgrid[-40:40:35j, -40:40:35j
 
     Z = function_env_Ackley(X, Y)  # Ackley函数图像
     Z1 = function_env_Ackley(x1, x2)  # 在图像上显示种群
@@ -104,14 +94,6 @@ def decode_dna(dna):
 
     transDNA1.append(x1)
     transDNA2.append(x2)
-
-    # transDNA1.sort()
-    # transDNA2.sort()
-
-    # list_xx.append(x1)
-    # list_xx.append(x2)
-    # dna_decode.append(list_xx)  # 把解码值送入解码列表
-    # # print(dna_decode)
     return transDNA1, transDNA2  # 返回个体 DNA 解码列表1, 解码列表2
 
 
@@ -139,35 +121,12 @@ def cross_dna(father, mother):
     c1 = list(c1)
     c2 = list(c2)
     child_dna = c1 + c2
-
-    # # 把种群分为两组
-    # cro1 = dna_decode[::2]
-    # cro2 = dna_decode[1::2]
-    #
-    # n = max(len(cro1), len(cro2))
-    # s = random.randint(0, n)  # 基因交叉数量
-    # n2 = random.sample(range(0, n), s)  # 确认交叉的个体标签
-    # print(f"交配对数：{s}")
-    #
-    # print(f'正在交配：')
-    # for i in n2:
-    #     x1 = (cro1[i][0] + cro2[i][0]) / 2
-    #     x1 = round(x1, 4)
-    #     x2 = (cro1[i][1] + cro2[i][1]) / 2
-    #     x2 = round(x2, 4)
-    #
-    #     child = [x1, x2]
-    #     print(f'子代为：{child}')
-    #     dna_decode.append(child)
-    #
-    # cro_dna = dna_decode
     return child_dna
 
 
 # 适应度
 def get_fitness(x1, x2):
     z = function_env_Ackley(x1, x2)
-    # fitness = statistics.mean(z)  # 取均值作为适应度
     fitness = (z - np.min(z)) + 1e-4
     fitness = fitness / fitness.sum()
     fitness = -np.round(fitness, 4) + 1  # z值越大，适应度越小
@@ -223,16 +182,6 @@ def select_pop(fitness, num, transDNA1, transDNA2, pop_num):
     transDNA2 = select_dna2
     pop_num = select_pop_num
 
-    # p_fitness = np.random.choice(fitness)
-    # id_list = []
-    # for idx, p in enumerate(fitness):
-    #     if p < p_fitness:
-    #         id_list.append(idx)
-    # for idx in id_list[::-1]:
-    #     x1 = transDNA1[idx]
-    #     x2 = transDNA2[idx]
-    #     transDNA1.remove(x1)
-    #     transDNA2.remove(x2)
     return transDNA1, transDNA2, pop_num
 
 
@@ -263,36 +212,6 @@ def graph_line(generation_num, z, population_num):
     for x, y, n in zip(generation_num, z, population_num):
         plt.plot(x, y, color=randomcolor(), label=f'初始种群数量:{n}')
     plt.legend()
-# # 开始训练
-# def train_fun(generation_num, population):
-#     transDNA1 = []  # dna序列1
-#     transDNA2 = []  # dna序列2
-#     print(f"种群已繁衍到第{generation_num + 1}代。")
-#     print(f"当前种群数量：{len(population)}")
-#
-#     father, mother = make_pair(population)  # 生成父母
-#     child_list = get_child(father, mother)
-#
-#     population = population + child_list  # 子代和父代（二进制）
-#     # pop_num_copy = pop_num.copy()
-#     # 种群dna解码
-#     for dna in population:
-#         transDNA1, transDNA2 = decode_dna(dna, transDNA1, transDNA2)
-#     print(f"选择前的种群数量:{len(population)}")
-#     # show_Ackley(transDNA1, transDNA2)
-#
-#     # 适应度
-#     fitness = get_fitness(transDNA1, transDNA2)
-#     transDNA1, transDNA2, population = select_pop(fitness, num, transDNA1, transDNA2, population)
-#     # 选择
-#
-#     # 选择后的种群
-#     print(f"选择后的种群{len(population)}")
-#
-#     print("解码列表x1", transDNA1)  # x1
-#     print("解码列表x2", transDNA2)  # x2
-#     Z1 = show_Ackley(fig, transDNA1, transDNA2, generation_num)
-#     print("\n")
 
 
 if __name__ == "__main__":
