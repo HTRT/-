@@ -37,7 +37,7 @@ def function_env_Ackley(x, y):
 # 图像显示
 def show_Ackley(fig, x1, x2, i, n):
     plt.clf()
-    X, Y = np.mgrid[-40:40:35j, -40:40:35j
+    X, Y = np.mgrid[-40:40:35j, -40:40:35j]
 
     Z = function_env_Ackley(X, Y)  # Ackley函数图像
     Z1 = function_env_Ackley(x1, x2)  # 在图像上显示种群
